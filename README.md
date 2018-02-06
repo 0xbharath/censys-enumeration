@@ -5,14 +5,14 @@
 
 ## Screenshots
 
-## Non verbose mode
+#### Non verbose mode
 ![non-verbose](imgs/non_verbose.png)
 
 
-## Verbose mode
+#### Verbose mode
 ![verbose](imgs/verbose_output.png)
 
-## Sample JSON output
+#### Sample JSON output
 ![non-verbose](imgs/sample_json_output.png)
 ## 3rd party package dependency 
 
