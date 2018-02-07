@@ -105,7 +105,7 @@ def print_emails(emails_found, domain):
         print(email)
 
 def write_to_json(domain):
-    with open('email_data.json', 'w') as outfile:
+    with open('json_report.json', 'w') as outfile:
         json.dump(json_report, outfile, default=str)
         file_path = os.path.abspath(outfile.name)
     logging.info("\033[1;32m[+] JSON results written to : {}\033[1;m".format(file_path))
