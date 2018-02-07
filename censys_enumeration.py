@@ -108,7 +108,7 @@ def write_to_json(domain):
     with open('json_report.json', 'w') as outfile:
         json.dump(json_report, outfile, default=str)
         file_path = os.path.abspath(outfile.name)
-    logging.info("\033[1;32m[+] JSON results written to : {}\033[1;m".format(file_path))
+    logging.info("\033[1;32m[+] Results written to JSON file : {}\033[1;m".format(file_path))
 
 def get_domains(domain_names_file):
     with open(domain_names_file) as f:
