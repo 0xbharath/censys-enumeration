@@ -3,6 +3,9 @@
 - A script to extract subdomains/emails for a given domain using SSL/TLS certificates dataset on Censys
 - The output is in JSON format
 
+## Demo
+
+![script-in-action](imgs/demo.gif)
 ## Screenshots
 
 #### Non verbose mode
