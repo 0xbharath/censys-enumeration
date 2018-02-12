@@ -106,7 +106,7 @@ def print_subdomains(subdomains_found, domain):
     if len(subdomains_found) is 0:
         logging.info('[!] Did not find any email addresses')
         return
-    logging.info("\033[92m[+] Total unique subdomains found for {}: {}\033[1;m".format(domain, len(subdomains_found)))
+    logging.info("\033[92m[*] Total unique subdomains found for {}: {}\033[1;m".format(domain, len(subdomains_found)))
     for subdomain in sorted(subdomains_found):
         print(subdomain)
 
@@ -114,7 +114,7 @@ def print_emails(emails_found, domain):
     if len(emails_found) is 0:
         logging.info('[!] Did not find any email addresses')
         return
-    logging.info("\033[92m[+] Total unique emails found for {}: {}\033[1;m".format(domain, len(emails_found)))
+    logging.info("\033[92m[*] Total unique emails found for {}: {}\033[1;m".format(domain, len(emails_found)))
     for email in sorted(emails_found):
         print(email)
 
@@ -144,13 +144,13 @@ def main(emails, subdomains, verbose,file,outfile):
     certificates = get_certificates()
     for domain in domains:
         domain = domain.rstrip()
-        if emails == True: # Only if emails enumration is enabled
+        if emails == True: # Only if emails enumeration is enabled
             emails_found = get_emails(domain,certificates)
             if verbose:
                 print_emails(emails_found, domain)
         else:
             print("[*] Email enumeration disabled")
-        if subdomains == True: # Only if sudomain enumration is enabled
+        if subdomains == True: # Only if sudomain enumeration is enabled
             subdomains_found = get_subdomains(domain,certificates)
             if verbose:
                 print_subdomains(subdomains_found, domain)
