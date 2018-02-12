@@ -21,8 +21,16 @@ __author__  = "Bharath(github.com/yamakira)"
 __version__ = "0.1"
 __purpose__ = '''Extract subdomains/emails for a domain from censys SSL/TLS certificate dataset'''
 
-CENSYS_API_ID = os.environ['CENSYS_API_ID'] # Add CENSYS_API_ID as environment variable
-CENSYS_API_SECRET = os.environ['CENSYS_API_SECRET'] # Add CENSYS_API_SECRET as environment variable
+if "CENSYS_API_ID" in os.environ:
+    CENSYS_API_ID = os.environ['CENSYS_API_ID'] # Add CENSYS_API_ID as environment variable
+else:
+    print("[!] No environmental variable with name CENSYS_API_ID. \
+            Please add you Censys API ID to env variables")
+if "CENSYS_API_SECRET" in os.environ:
+    CENSYS_API_SECRET = os.environ['CENSYS_API_SECRET'] # Add CENSYS_API_SECRET as env variable
+else:
+    print("[!] No environmental variable with name CENSYS_API_SECRET. \
+            Please add you Censys API Secret to env variables")
 
 try:
     import censys.certificates
