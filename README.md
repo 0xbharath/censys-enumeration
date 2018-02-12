@@ -84,3 +84,9 @@ $ python censys_enumeration.py --no-sudomains domains.txt
 ```
 $ python censys_enumeration.py --verbose domains.txt 
 ```
+
+- Output to custom file
+
+$ python censys_enumeration.py --verbose --outfile results.json domains.txt 
+```
+```
