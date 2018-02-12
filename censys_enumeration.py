@@ -104,8 +104,8 @@ def print_emails(emails_found, domain):
     for email in sorted(emails_found):
         print(email)
 
-def write_to_json(domain):
-    with open('json_report.json', 'w') as outfile:
+def write_to_json(domain,outfile):
+    with open(outfile, 'w') as outfile:
         json.dump(json_report, outfile, default=str)
         file_path = os.path.abspath(outfile.name)
     logging.info("\033[1;32m[+] Results written to JSON file : {}\033[1;m".format(file_path))
@@ -123,8 +123,9 @@ def get_domains(domain_names_file):
                 help='Enable/Disable subdomain enumeration')
 @click.option('--emails/--no-emails', default=True, 
                 help='Enable/Disable email enumeration')
+@click.option('--outfile', nargs=1, type=str, default='json_results')
 
-def main(emails, subdomains, verbose, file):
+def main(emails, subdomains, verbose,file,outfile):
     domains = get_domains(file)
     certificates = get_certificates()
     for domain in domains:
@@ -142,7 +143,7 @@ def main(emails, subdomains, verbose, file):
         else:
             print("[*] Subdomain enumeration disabled")
         json_report[domain] = {"domain":domain,"emails":list(emails_found), "subdomains":list(subdomains_found)}
-    write_to_json(domain) # Write the JSON report to file
+    write_to_json(domain, outfile) # Write the JSON report to file
 
 if __name__ == '__main__':
     main()
