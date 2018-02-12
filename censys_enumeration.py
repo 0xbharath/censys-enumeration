@@ -26,11 +26,13 @@ if "CENSYS_API_ID" in os.environ:
 else:
     print("[!] No environmental variable with name CENSYS_API_ID. \
             Please add you Censys API ID to env variables")
+    sys.exit(1)
 if "CENSYS_API_SECRET" in os.environ:
     CENSYS_API_SECRET = os.environ['CENSYS_API_SECRET'] # Add CENSYS_API_SECRET as env variable
 else:
     print("[!] No environmental variable with name CENSYS_API_SECRET. \
-            Please add you Censys API Secret to env variables")
+            Please add you Censys API Secret 1to env variables")
+    sys.exit(1)
 
 try:
     import censys.certificates
@@ -84,7 +86,11 @@ def get_subdomains(domain, certificates):
 def get_emails(domain, certificates):
     del emails_found[:]
     logging.info("[+] Extracting emails belonging to {} from SSL/TLS certificates".format(domain.rstrip()))
-    certificate_query = 'parsed.names: {}'.format(domain)
+    try:
+        certificate_query = 'parsed.names: {}'.format(domain)
+    except CensysException:
+        logging.info('\033[93m[!] Error while fetching results from Censys.\n\033[1;m')
+        sys.exit(1)
     try:
         certificates_search_results = certificates.search(certificate_query, fields=['parsed.subject.email_address'])
     except KeyError:
