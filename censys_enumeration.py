@@ -104,7 +104,7 @@ def get_emails(domain, certificates):
 
 def print_subdomains(subdomains_found, domain):
     if len(subdomains_found) is 0:
-        logging.info('[!] Did not find any email addresses')
+        logging.info('[!] Did not find any subdomains')
         return
     logging.info("\033[92m[*] Total unique subdomains found for {}: {}\033[1;m".format(domain, len(subdomains_found)))
     for subdomain in sorted(subdomains_found):
